@@ -5,7 +5,7 @@
 """
 import re
 from datetime import datetime
-from pathlib import Path
+from pathlib import Path, PurePosixPath, PureWindowsPath
 
 # Windows 保留设备名（不含扩展名部分，大小写不敏感）
 WINDOWS_RESERVED = {
@@ -76,10 +76,25 @@ def is_within(base_dir, path):
 def resolve_within(base_dir, filename):
     """把 filename 拼到 base_dir 下并解析，确认仍位于 base_dir 内。
 
-    返回解析后的绝对 Path；若逃逸（..\\、绝对路径等）抛 ValueError。
+    同时按 Windows 和 POSIX 语义识别路径分隔符，避免在非 Windows
+    环境中把 ``..\\outside`` 误当成普通文件名。
+
+    返回解析后的绝对 Path；若逃逸（../、..\\、绝对路径等）抛 ValueError。
     """
     base = Path(base_dir).resolve()
-    candidate = (base / filename).resolve()
+    raw = str(filename)
+    windows_path = PureWindowsPath(raw)
+    portable_path = PurePosixPath(raw.replace("\\", "/"))
+    if (
+        "\x00" in raw
+        or windows_path.anchor
+        or portable_path.is_absolute()
+        or ".." in portable_path.parts
+    ):
+        raise ValueError(f"路径逃逸输出目录: {filename!r}")
+
+    safe_parts = [part for part in portable_path.parts if part not in ("", ".")]
+    candidate = base.joinpath(*safe_parts).resolve()
     if candidate.parent != base and base not in candidate.parents:
         raise ValueError(f"路径逃逸输出目录: {filename!r}")
     return candidate

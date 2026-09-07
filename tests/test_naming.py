@@ -72,6 +72,10 @@ class TestResolveWithin:
         with pytest.raises(ValueError):
             resolve_within(tmp_path, "..\\outside.mp4")
 
+    def test_posix_dotdot_escape_raises(self, tmp_path):
+        with pytest.raises(ValueError):
+            resolve_within(tmp_path, "../outside.mp4")
+
     def test_deep_escape_raises(self, tmp_path):
         with pytest.raises(ValueError):
             resolve_within(tmp_path, "..\\..\\..\\Windows\\evil.mp4")
@@ -80,6 +84,10 @@ class TestResolveWithin:
         other = tmp_path_factory.mktemp("other")
         with pytest.raises(ValueError):
             resolve_within(tmp_path, str(other / "x.mp4"))
+
+    def test_windows_absolute_path_raises_on_every_platform(self, tmp_path):
+        with pytest.raises(ValueError):
+            resolve_within(tmp_path, "C:\\Windows\\evil.mp4")
 
     def test_is_within(self, tmp_path):
         inner = tmp_path / "sub" / "f.mp4"

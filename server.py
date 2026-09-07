@@ -2291,7 +2291,7 @@ def api_choose_dir():
         r = subprocess.run(
             ["powershell.exe", "-NoProfile", "-STA", "-Command", ps],
             capture_output=True, text=True, timeout=90,
-            creationflags=subprocess.CREATE_NO_WINDOW,
+            creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0),
         )
         if r.returncode != 0:
             log.warning(f"Directory picker failed with exit code {r.returncode}")
