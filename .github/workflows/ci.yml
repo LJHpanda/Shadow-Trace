@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main, opensource]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: ${{ matrix.os }} / Python ${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            python: '3.10'
+          - os: windows-latest
+            python: '3.14'
+          - os: ubuntu-latest
+            python: '3.12'
+
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+      - name: Install dependencies
+        run: python -m pip install -r requirements-dev.txt
+      - name: Python syntax
+        run: python -m compileall -q server.py desktop_launcher.py telegram_bot_api.py yt_dlp_worker.py core scripts
+      - name: JavaScript syntax
+        run: |
+          node --check static/app.js
+          node --check static/telegram-bot.js
+          node --check static/convert.js
+      - name: Public source policy
+        run: python scripts/public_release_check.py
+      - name: Tests
+        run: python -m pytest

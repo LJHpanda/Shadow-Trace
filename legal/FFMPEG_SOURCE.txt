@@ -1,0 +1,15 @@
+FFmpeg 对应源代码说明
+
+本发布流程当前捆绑：
+- FFmpeg version: 8.1.2
+- Build: essentials_build-www.gyan.dev
+- Configuration includes: --enable-gpl --enable-version3 --enable-static
+
+上游源代码：
+https://ffmpeg.org/releases/ffmpeg-8.1.2.tar.xz
+
+构建提供方及其源代码说明：
+https://www.gyan.dev/ffmpeg/builds/
+https://www.gyan.dev/ffmpeg/builds/#libraries
+
+正式发布前，发布者必须保存与所交付二进制精确对应的源代码和构建信息副本，并按 GPLv3 的要求向接收者提供。仅保留网页链接不能替代在链接失效时仍需履行的源代码提供义务。

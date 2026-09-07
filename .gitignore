@@ -1,0 +1,71 @@
+# --- Python ---
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+
+# --- Sensitive ---
+cookies.txt
+
+# --- Runtime generated ---
+logs/
+downloads/
+tasks.json
+groups.json
+.trash/
+stop.flag
+server.pid
+detect_records.json
+.verify_tmp/
+# 远程助手扩展的配置目录（内含机器人令牌，务必避免误提交仓库）
+.telegram_bot/
+.pytest_tmp/
+.pytest-tmp-*/
+.coverage
+htmlcov/
+server-stdout.log
+server_run.log
+_check.js
+_disk_calc.json
+_style_check.css
+build-cache/
+build-work/
+dist/
+release/
+release-source/
+.portable-verify/
+release/**/*.zip
+release/**/SHA256SUMS.txt
+release/**/build-manifest.json
+release/**/portable-verification.json
+
+# --- Debug / temp ---
+.visual_check_p004/
+debug_*.py
+
+# --- Local visual verification artifacts (kept in working tree, not committed) ---
+.visual_check_p003/
+.visual_check_p005/
+
+# --- Local build / runtime / scratch (not source, generated during dev) ---
+.backup-convert-20260801/
+.convert_server.log
+BRANCH-CONFLICT-COMPARISON.md
+Runtime/
+_live_outdir_test.py
+_live_video_test.py
+build/*.log
+
+# --- Unrelated / stray prototypes (not part of this Flask project) ---
+product-ui-prototype/
+
+# --- IDE ---
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# --- OS ---
+Thumbs.db
+.DS_Store
+Desktop.ini

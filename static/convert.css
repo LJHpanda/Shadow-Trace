@@ -1,0 +1,295 @@
+/* 格式转换模块样式
+ * 全部选择器带 cv- 前缀，只消费 app.css 里已有的设计变量，
+ * 不覆盖、不重定义任何既有类，卸载本文件即可完全移除该模块的视觉影响。
+ */
+
+.cv-caps {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  margin-bottom: var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  font-size: 13px;
+}
+.cv-caps-bad { color: #ff858c; border-color: rgba(255, 92, 102, .3); }
+.cv-caps-bad span { flex: 1; }
+.cv-caps .button { margin-left: auto; padding: 0 12px; height: 32px; }
+.cv-caps-path {
+  overflow: hidden;
+  max-width: 46%;
+  color: var(--muted-2);
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cv-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel-2);
+}
+.cv-pill i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--muted-2);
+}
+.cv-pill.ok i { background: var(--green); box-shadow: 0 0 0 3px rgba(57, 199, 141, .16); }
+.cv-pill.off i { background: var(--muted-2); }
+.cv-pill b { font-weight: 550; }
+.cv-pill em { color: var(--muted); font-size: 12px; font-style: normal; }
+.cv-pill.off em { color: #d89ba0; }
+
+.cv-drop {
+  display: grid;
+  place-items: center;
+  gap: 4px;
+  padding: 34px 20px 30px;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--panel);
+  text-align: center;
+  cursor: pointer;
+  transition: border-color .16s ease, background .16s ease, transform .16s ease;
+}
+.cv-drop:hover { border-color: rgba(229, 9, 20, .45); background: var(--panel-2); }
+.cv-drop.is-over {
+  border-color: var(--red);
+  background: rgba(229, 9, 20, .06);
+  transform: translateY(-1px);
+}
+.cv-drop-icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 8px;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  color: var(--muted);
+  font-size: 22px;
+  line-height: 1;
+}
+.cv-drop b { font-size: 16px; font-weight: 600; }
+.cv-drop p { max-width: 520px; margin: 2px 0 6px; color: var(--muted); font-size: 13px; }
+.cv-drop-exts { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.cv-drop-exts span {
+  padding: 3px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted-2);
+  font-size: 11.5px;
+}
+
+.cv-panel {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+.cv-panel-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--line);
+}
+.cv-panel-head b { font-size: 14px; font-weight: 600; }
+.cv-panel-head span { color: var(--muted-2); font-size: 12px; }
+
+.cv-count { color: var(--muted-2); font-size: 12px; }
+.cv-empty { padding: 26px 16px; color: var(--muted-2); font-size: 13px; text-align: center; }
+
+.cv-file-list { display: grid; }
+.cv-file {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--line);
+}
+.cv-file:last-child { border-bottom: none; }
+.cv-file.is-blocked { opacity: .55; }
+.cv-file-kind {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--panel-2);
+  font-size: 12px;
+}
+.cv-file-kind.image { color: var(--green); }
+.cv-file-kind.video { color: var(--blue); }
+.cv-file-main { display: grid; flex: 1; min-width: 0; gap: 1px; }
+.cv-file-main b {
+  overflow: hidden;
+  font-size: 13.5px;
+  font-weight: 550;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cv-file-main span { color: var(--muted-2); font-size: 12px; }
+.cv-file-up { flex: none; color: var(--blue); font-size: 12px; }
+.cv-file-target { display: flex; flex: none; align-items: center; gap: 7px; }
+.cv-file-target > span { color: var(--muted-2); font-size: 12px; }
+.cv-mini-select { width: auto; min-width: 104px; height: 32px; padding: 0 8px; }
+.cv-file .button.icon { flex: none; width: 32px; height: 32px; }
+
+.cv-options { display: grid; gap: var(--space-2); margin-top: var(--space-2); }
+.cv-opt-grid { display: grid; gap: 2px; padding: 6px 4px 12px; }
+.cv-row {
+  display: grid;
+  grid-template-columns: 104px minmax(0, 1fr);
+  align-items: center;
+  gap: 6px 14px;
+  padding: 7px 14px;
+}
+.cv-row-label { color: var(--muted); font-size: 13px; }
+.cv-row-control { display: block; min-width: 0; }
+.cv-row-control > .select { width: min(320px, 100%); }
+.cv-row-hint {
+  grid-column: 2;
+  color: var(--muted-2);
+  font-size: 11.5px;
+  font-style: normal;
+}
+.cv-row-checks { grid-template-columns: 1fr; gap: 18px; display: flex; flex-wrap: wrap; padding: 10px 14px 4px; }
+
+.cv-inline { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.cv-inline em { color: var(--muted-2); font-size: 12px; font-style: normal; }
+.cv-inline .select { width: auto; min-width: 150px; }
+.cv-num { width: 96px; text-align: center; }
+.cv-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 12.5px;
+  cursor: pointer;
+}
+.cv-check input { accent-color: var(--red); }
+
+.cv-slider { display: flex; align-items: center; gap: 12px; }
+.cv-slider input[type="range"] { width: min(260px, 60%); accent-color: var(--red); }
+.cv-slider b {
+  min-width: 34px;
+  color: var(--text);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.cv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: var(--space-2);
+}
+.cv-actions-gap { flex: 1; }
+
+.cv-job { padding: 13px 15px; border-bottom: 1px solid var(--line); }
+.cv-job:last-child { border-bottom: none; }
+.cv-job-top { display: flex; align-items: center; gap: 12px; }
+.cv-job-name { display: grid; flex: 1; min-width: 0; gap: 1px; }
+.cv-job-name b {
+  overflow: hidden;
+  font-size: 13.5px;
+  font-weight: 550;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cv-job-name span { color: var(--muted-2); font-size: 12px; }
+.cv-bar {
+  overflow: hidden;
+  height: 4px;
+  margin: 9px 0 0;
+  border-radius: 999px;
+  background: var(--panel-3);
+}
+.cv-bar i {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--blue);
+  transition: width .3s ease;
+}
+.cv-bar.done i { background: var(--green); }
+.cv-bar.failed i, .cv-bar.canceled i { background: var(--muted-2); }
+.cv-job-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.cv-job-actions:empty { display: none; }
+.cv-job-actions .button { height: 32px; padding: 0 13px; font-size: 12.5px; }
+.cv-job-actions a.button { display: inline-flex; align-items: center; text-decoration: none; }
+.cv-job-actions .button.icon { width: 32px; padding: 0; }
+
+.cv-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, .74);
+  backdrop-filter: blur(7px);
+}
+.cv-modal {
+  display: grid;
+  overflow: hidden;
+  width: min(920px, 100%);
+  max-height: calc(100vh - 60px);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  grid-template-rows: auto minmax(0, 1fr) auto;
+}
+.cv-modal header,
+.cv-modal footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 15px;
+}
+.cv-modal header { border-bottom: 1px solid var(--line); }
+.cv-modal footer { border-top: 1px solid var(--line); color: var(--muted-2); font-size: 12px; }
+.cv-modal footer a.button { text-decoration: none; }
+.cv-modal header b {
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cv-modal-body {
+  display: grid;
+  place-items: center;
+  overflow: auto;
+  padding: 16px;
+  background: var(--panel-2);
+}
+.cv-modal-body img,
+.cv-modal-body video {
+  max-width: 100%;
+  max-height: calc(100vh - 220px);
+  border-radius: 8px;
+  background: #000;
+  object-fit: contain;
+}
+
+@media (max-width: 900px) {
+  .cv-row { grid-template-columns: 1fr; }
+  .cv-row-hint { grid-column: 1; }
+  .cv-caps-path { max-width: 100%; }
+  .cv-file { flex-wrap: wrap; }
+  .cv-file-target { width: 100%; justify-content: flex-end; }
+}

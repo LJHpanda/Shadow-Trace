@@ -1,0 +1,25 @@
+影迹第三方软件声明
+
+本产品包含或随附多个开源软件组件。各组件仍由其权利人所有，并分别适用其原始许可证。主要组件包括但不限于：
+
+- Python
+- Flask、Werkzeug、Jinja2、MarkupSafe、ItsDangerous、Click
+- Waitress
+- yt-dlp
+- python-telegram-bot、httpx、httpcore、anyio
+- Pillow
+- FFmpeg 及其启用的编解码库
+- certifi
+- openpyxl
+- send2trash
+
+Python 依赖的精确版本以发布包 build-manifest.json 及构建使用的 requirements-build.txt 为准。完整依赖许可证应随正式发布归档一并复核。
+
+本发行流程当前使用的 FFmpeg 8.1.2 essentials build 启用了 GPLv3。发布包随附 COPYING.GPLv3.txt 和 FFMPEG_SOURCE.txt。FFmpeg 的许可义务独立于影迹自身许可，影迹的项目许可证不会限制 FFmpeg 许可证授予接收者的权利。
+
+项目主页：
+https://www.python.org/
+https://flask.palletsprojects.com/
+https://github.com/Pylons/waitress
+https://github.com/yt-dlp/yt-dlp
+https://ffmpeg.org/
