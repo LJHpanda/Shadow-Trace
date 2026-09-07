@@ -1,6 +1,6 @@
 # Python 3.10+
 Flask>=3.1,<4
-yt-dlp>=2026.7.4,<2027
+yt-dlp>=2026.8.19,<2027
 Pillow>=12,<13
 python-telegram-bot>=22.8,<23
 openpyxl>=3.1,<4
