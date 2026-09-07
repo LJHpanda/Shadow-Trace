@@ -23,7 +23,7 @@ pyinstaller-hooks-contrib==2026.6
 python-telegram-bot==22.8
 pywin32-ctypes==0.2.3
 Send2Trash==1.8.3
-setuptools==83.0.0
+setuptools==84.0.0
 waitress==3.0.2
 Werkzeug==3.1.8
 yt-dlp==2026.7.4
